@@ -17,20 +17,20 @@ class Checkout extends StatelessWidget {
             Divider(height: 1, color: Colors.grey[300]),
             getCheckoutItems(context),
             Divider(height: 1, color: Colors.grey[300]),
-              computeCost(),
-              Flexible(
-                child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      ElevatedButton(
-                        onPressed: () {
-                          context.read<ShoppingCart>().removeAll();
-                          Navigator.pop(context, "Payment Successful!");
-                        },
-                        child: const Text("Pay Now!")),
-                    ],
-                ),
+            computeCost(),
+            Flexible(
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ElevatedButton(
+                      onPressed: () {
+                        context.read<ShoppingCart>().removeAll();
+                        Navigator.pop(context, "Payment Successful!");
+                      },
+                      child: const Text("Pay Now!")),
+                  ],
               ),
+            ),
             ]
         ),
       );
@@ -59,6 +59,6 @@ class Checkout extends StatelessWidget {
 
 Widget computeCost() {
     return Consumer<ShoppingCart>(builder: (context, cart, child) {
-       return Text("Total Cost to Pay: ${cart.cartTotal}");
+       return Text("Total Cost to Pay: ${cart.cartTotal.toStringAsFixed(2)}");
     });
   }
