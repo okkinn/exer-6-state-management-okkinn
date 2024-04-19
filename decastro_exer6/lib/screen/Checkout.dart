@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import '../model/Item.dart';
 import "package:provider/provider.dart";
 import "../provider/shoppingcart_provider.dart";
@@ -30,8 +29,8 @@ class Checkout extends StatelessWidget {
                   children: [
                     ElevatedButton(
                       onPressed: () {
-                        context.read<ShoppingCart>().removeAll();
-                        Navigator.pop(context, "Payment Successful!");
+                        Navigator.pop(context, true);
+                        // Navigator.popUntil(context, ModalRoute.withName('/'));
                       },
                       child: const Text("Pay Now!")),
                   ],

@@ -1,3 +1,11 @@
+/*
+To Do:
+- when checking out succesfully,
+  - go to mycatalog page
+  - show Payment Successful! snackbar
+
+*/
+
 import 'package:flutter/material.dart';
 import 'package:decastro_exer6/screen/MyCart.dart';
 import 'package:decastro_exer6/screen/MyCatalog.dart';

@@ -4,6 +4,7 @@ import "package:provider/provider.dart";
 import '../provider/shoppingcart_provider.dart';
 
 class MyCatalog extends StatefulWidget {
+  static String routename = "/products";
   const MyCatalog({super.key});
 
   @override
@@ -44,8 +45,18 @@ class _MyCatalogState extends State<MyCatalog> {
             itemCount: productsCatalog.length),
         floatingActionButton: FloatingActionButton(
           child: const Icon(Icons.shopping_cart),
-          onPressed: () {
-            Navigator.pushNamed(context, "/cart");
+          onPressed: () async {
+            // method: pop twice from checkout, returning true as the argument
+            // will check for the argument value here and show snackbar if true
+            // make the 2 onPressed containing pushNamed async
+
+            final isPaymentSuccessful = await Navigator.pushNamed(context, "/cart");
+            if(isPaymentSuccessful == true) {
+              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                content: Text("Payment Successful!"),
+                duration: Duration(seconds: 1, milliseconds: 100),
+              ));
+            }
           },
         ));
   }

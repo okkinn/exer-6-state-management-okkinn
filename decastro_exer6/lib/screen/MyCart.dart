@@ -27,8 +27,13 @@ class MyCart extends StatelessWidget {
                       },
                       child: const Text("Reset")),
                     ElevatedButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, "/checkout");
+                      onPressed: () async {
+                        final result = await Navigator.pushNamed(context, "/checkout");
+                        if(result == true) {
+                          Navigator.pop(context, result);
+                        }
+
+                        // Navigator.pushNamed(context, "/checkout");
                       },
                       child: const Text("Checkout")),
                   ]
@@ -38,7 +43,7 @@ class MyCart extends StatelessWidget {
             TextButton(
               child: const Text("Go back to Product Catalog"),
               onPressed: () {
-                Navigator.pop(context);
+                Navigator.pop(context, false);
                 // Navigator.pushNamed(context, "/products");
               },
             ),
