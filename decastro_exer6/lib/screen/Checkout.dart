@@ -14,7 +14,7 @@ class Checkout extends StatelessWidget {
         body: products.isEmpty ? Column(children: [   // if empty
           const Text("Item Details"),
           Divider(height: 1, color: Colors.grey[300]),
-          const Text('No Items yet!')
+          const Text('No Items to checkout!')
         ])
         : Column(     // if not empty
           children: [
