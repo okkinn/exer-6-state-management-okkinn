@@ -53,6 +53,7 @@ class Checkout extends StatelessWidget {
                         return ListTile(
                           title: Text(products[index].name),
                           trailing: Text(products[index].price.toStringAsFixed(2)),
+                          leadingAndTrailingTextStyle: const TextStyle(fontSize: 14.0),
                       );
                     },
                   )),
