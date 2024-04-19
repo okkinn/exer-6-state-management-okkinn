@@ -9,13 +9,19 @@ class Checkout extends StatelessWidget {
 
   @override
     Widget build(BuildContext context) {
+      List<Item> products = context.watch<ShoppingCart>().cart;
       return Scaffold(
         appBar: AppBar(title: const Text("Checkout")),
-        body: Column(
+        body: products.isEmpty ? Column(children: [
+          const Text("Item Details"),
+          Divider(height: 1, color: Colors.grey[300]),
+          const Text('No Items yet!')
+        ])
+        : Column(
           children: [
             const Text("Item Details"),
             Divider(height: 1, color: Colors.grey[300]),
-            getCheckoutItems(context),
+            getCheckoutItems(products),
             Divider(height: 1, color: Colors.grey[300]),
             computeCost(),
             Flexible(
@@ -36,9 +42,7 @@ class Checkout extends StatelessWidget {
       );
     }
 
-    Widget getCheckoutItems(BuildContext context) {
-      List<Item> products = context.watch<ShoppingCart>().cart;
-      String productname = "";
+    Widget getCheckoutItems(List<Item> products) {
       return Expanded(
                 child: Column(
                 children: [
